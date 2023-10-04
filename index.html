@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .book {
+            width: 300px;
+            height: 400px;
+            background-color: white;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .cover {
+            background-color: pink;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .page {
+            background-color: #fff;
+            padding: 20px;
+            display: none;
+        }
+
+        .page h1 {
+            font-size: 20px;
+        }
+
+        button {
+            margin-top: 10px;
+            background-color: pink;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            outline: none;
+        }
+
+        button:hover {
+            background-color: #ff69b4;
+        }
+    </style>
+</head>
+<body>
+    <div class="book">
+        <div class="cover">Reasons Why I Love You</div>
+        <div class="page" id="page1">
+            <h1>Reason #1</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div class="page" id="page2">
+            <h1>Reason #2</h1>
+            <p>Nullam tristique odio eu odio cursus, eu aliquam nunc dapibus.</p>
+        </div>
+        <div class="page" id="page3">
+            <h1>Reason #3</h1>
+            <p>Sed vitae velit non nisi dignissim facilisis.</p>
+        </div>
+    </div>
+    <button id="prev" onclick="showPage(-1)">Previous</button>
+    <button id="next" onclick="showPage(1)">Next</button>
+    <script>
+        let currentPage = 1;
+        showPage(currentPage);
+
+        function showPage(n) {
+            const pages = document.querySelectorAll(".page");
+            if (currentPage + n >= 1 && currentPage + n <= pages.length) {
+                pages[currentPage - 1].style.display = "none";
+                currentPage += n;
+                pages[currentPage - 1].style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
